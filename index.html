@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SGPA Calculator</title>
+</head>
+<body>
+  <h2>Student SGPA Calculator (6 Subjects)</h2>
+
+  <label>Application No:</label>
+  <input type="text" id="appNo"><br><br>
+
+  <label>Roll No:</label>
+  <input type="text" id="rollNo"><br><br>
+
+  <label>Name:</label>
+  <input type="text" id="name"><br><br>
+
+
+  <h3>Enter Marks</h3>
+  <label>MATHS:</label>
+  <input type="number" id="sub1"><br><br>
+
+  <label>DSA:</label>
+  <input type="number" id="sub2"><br><br>
+
+  <label>FSD:</label>
+  <input type="number" id="sub3"><br><br>
+
+  <label>ML:</label>
+  <input type="number" id="sub4"><br><br>
+
+  <label>RM:</label>
+  <input type="number" id="sub5"><br><br>
+
+  <label>MAOM:</label>
+  <input type="number" id="sub6"><br><br>
+
+  <label>Total Marks for each subject:</label>
+  <input type="number" id="total" value="100"><br><br>
+
+  <button onclick="calculateCGPA()">Calculate CGPA</button>
+
+  <h3 id="result"></h3>
+
+  <script>
+    function calculateSGPA() {
+      let total = parseFloat(document.getElementById("total").value);
+      if (isNaN(total) || total <= 0) {
+        alert("Please enter a valid total marks value.");
+        return;
+      }
+
+      let marks = [];
+      for (let i = 1; i <= 6; i++) {
+        let val = parseFloat(document.getElementById("sub" + i).value);
+        if (isNaN(val)) {
+          alert("Please enter marks for Subject " + i);
+          return;
+        }
+        marks.push(val);
+      }
+
+      // GPA per subject = (marks / total) * 10
+      let gpas = marks.map(m => (m / total) * 10);
+      let cgpa = (gpas.reduce((a, b) => a + b, 0) / gpas.length).toFixed(2);
+
+      document.getElementById("result").innerText =
+        "SGPA of " + document.getElementById("name").value + " is: " + cgpa;
+    }
+
+  </script>
+</body>
+</html>
