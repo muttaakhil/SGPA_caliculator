@@ -15,7 +15,6 @@
   <label>Name:</label>
   <input type="text" id="name"><br><br>
 
-
   <h3>Enter Marks</h3>
   <label>MATHS:</label>
   <input type="number" id="sub1"><br><br>
@@ -38,7 +37,8 @@
   <label>Total Marks for each subject:</label>
   <input type="number" id="total" value="100"><br><br>
 
-  <button onclick="calculateCGPA()">Calculate CGPA</button>
+  <!-- fixed here -->
+  <button onclick="calculateSGPA()">Calculate SGPA</button>
 
   <h3 id="result"></h3>
 
@@ -67,7 +67,6 @@
       document.getElementById("result").innerText =
         "SGPA of " + document.getElementById("name").value + " is: " + cgpa;
     }
-
   </script>
 </body>
 </html>
